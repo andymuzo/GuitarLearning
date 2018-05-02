@@ -1,0 +1,77 @@
+﻿@model GuitarLearning.Models.Exam
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Exam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instrument)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instrument)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamBoard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamBoard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTo)
+        </dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pieces)
+        </dt>
+
+		<dd>
+		@foreach (var piece in Model.Pieces)
+        {
+            <p>
+			@piece.Name
+            <text>, </text>
+            @piece.Composer
+			<text>- </text>
+			@Html.ActionLink("Details", "Details", "Piece", new {id = piece.PieceID}, null)
+            </p>
+			
+
+        }
+		</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExamID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

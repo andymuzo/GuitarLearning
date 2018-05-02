@@ -1,0 +1,89 @@
+﻿@model GuitarLearning.Models.Piece
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Piece</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Composer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Composer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearPublished)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearPublished)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Style)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Style)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Exams)
+        </dt>
+
+        <dd>
+            @foreach (var exam in Model.Exams)
+            {
+                @exam.ExamBoard; 
+                @:- Grade 
+                @exam.Grade;
+				@:
+				@exam.Instrument;
+				@:-
+				@Html.ActionLink("Details", "Details", "Exam", new {id = exam.ExamID}, null)
+                <br />
+
+            }
+        </dd>
+
+        @if (@Html.DisplayFor(model => model.VideoLink) != null)
+    {
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoLink)
+        </dt>
+
+        <dd>
+            <iframe width="560" height="315" src="@Html.DisplayFor(model => model.VideoLink)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </dd>
+}
+
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PieceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

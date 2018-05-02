@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GuitarLearning.Models.Exam>
+
+@{
+    ViewBag.Title = "Grade Exams";
+}
+
+<h2>Grade Exams</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+		<th>
+            @Html.DisplayNameFor(model => model.ExamBoard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instrument)
+        </th>
+        <th>
+            Dates
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+	    <td>
+            @Html.DisplayFor(modelItem => item.ExamBoard)
+        </td>
+        <td>
+            Grade
+			@Html.DisplayFor(modelItem => item.Grade)
+			@Html.DisplayFor(modelItem => item.Instrument)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFrom.Year)<text> - </text>@Html.DisplayFor(modelItem => item.DateTo.Year)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExamID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExamID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExamID })
+        </td>
+    </tr>
+}
+
+</table>
